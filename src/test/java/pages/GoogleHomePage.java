@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import java.lang.String;
 
 public class GoogleHomePage {
 
@@ -14,29 +15,29 @@ public class GoogleHomePage {
     }
 
     //Using FindBy for locating elements
-    @FindBy(how=How.XPATH, using="//div[text()='Account Settings']") WebElement profileDropdown;
-    @FindBy(how=How.XPATH, using="//text()[.='Log Out']/ancestor::span[1]") WebElement logoutLink;
-    @FindBy(how=How.XPATH, using="///div[text()='Good afternoon, SoftwareTesting!']") WebElement loggedInUserNameText;
-    @FindBy(how=How.CLASS_NAME, className = "g") WebElement searchResult;
+    @FindBy(how=How.NAME, name = "q") WebElement searchInputField;
+    @FindBy(how=How.CSS, using = "a#gb_70.gb_Pe.gb_Ba.gb_Mb") WebElement loginButton;
+
+    //Defining frequently used variables;
+    public String inputString = "yandex.ru";
 
     // Defining all the user actions (Methods) that can be performed in the Google home page
-
-    // This method to click on Profile Dropdown
-    public void clickOnProfileDropdown(){
-        profileDropdown.click();
+    // This method enters input in form
+    public void inputSearchForm(){
+        searchInputField.sendKeys(inputString);
     }
-    // This method to click on Logout link
-    public void clickOnLogoutLink(){
-        logoutLink.click();
+    // This method submits form
+    public void submitSearchForm(){
+        searchInputField.submit();
     }
-    // This method to verify LoggedIn Username Text
-    public String verifyLoggedInUserNameText(){
-        String userName = loggedInUserNameText.getText();
-        return userName;
-    }
-
-    public String clickOnFirstSearchResult() {
-        String searchUrl = searchResult.getText();
-        return  searchUrl;
+    // Other methods for example to verify LoggedIn Username Text
+    public String verifyloginButton(){
+        String loginButtonText = loginButton.getText();
+        Boolean buttonExists = loginButton.isDisplayed();
+            if (buttonExists) {
+                System.out.println("Login Button with text "+loginButtonText);
+            }
+            else {System.out.println("There is no login Button");}
+        return loginButtonText;
     }
 }

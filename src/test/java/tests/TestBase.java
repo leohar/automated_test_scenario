@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestBase {
 
@@ -14,7 +13,7 @@ public class TestBase {
     @BeforeSuite
     public void initialize() throws IOException{
 
-        //      System.setProperty("webdriver.chrome.driver", );
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
         driver = new ChromeDriver();
         //To maximize browser
         driver.manage().window().maximize();
