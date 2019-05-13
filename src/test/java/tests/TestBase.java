@@ -20,8 +20,8 @@ public class TestBase {
         //Implicit wait
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //To open Google
-        driver.get("https://www.google.com");
-
+        driver.get("http://thawing-shelf-73260.herokuapp.com/index.jsp");
+        
     }
 
     @AfterSuite
